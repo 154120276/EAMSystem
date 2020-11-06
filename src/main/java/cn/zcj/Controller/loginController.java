@@ -4,6 +4,7 @@ import cn.zcj.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -20,15 +21,22 @@ public class loginController {
     private UserService userService;
 
     @RequestMapping("login")
-    public String login(String username, String password, String type,String verity, HttpSession session){
+    public ModelAndView login(String username, String password, String type, String verity, HttpSession session){
+        ModelAndView modelAndView = new ModelAndView();
         if ( verity.equals(session.getAttribute("CHECKCODE_SERVER"))){
             if(userService.login(username,password,type)){
-                return "登录成功！";
+                modelAndView.addObject("user",username);
+                modelAndView.setViewName("admin/index/index.html");
+                return modelAndView;
             }else {
-                return "用户名密码错误";
+                modelAndView.addObject("Error_Message","用户名密码错误");
+                modelAndView.setViewName("admin/index/login.html");
+                return modelAndView;
             }
         } else {
-            return "验证码错误";
+            modelAndView.addObject("Error_Message","验证码错误");
+            modelAndView.setViewName("admin/index/login.html");
+            return modelAndView;
         }
     }
     @RequestMapping("checkcode")
