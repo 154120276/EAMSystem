@@ -14,12 +14,12 @@
 			<div class="m-login">
 				<h3>学生信息管理系统登录</h3>
 				<div class="m-login-warp">
-					<form class="layui-form" action="../login">
+					<form class="layui-form" action="../../login">
 						<div class="layui-form-item">
 							<input type="text" name="username" required lay-verify="required" placeholder="用户名" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
-							<input type="text" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
+							<input type="password" name="password" required lay-verify="required" placeholder="密码" autocomplete="off" class="layui-input">
 						</div>
 						<div class="layui-form-item">
 							<select name="type">
@@ -33,7 +33,7 @@
 								<input type="text" name="verity" required lay-verify="required" placeholder="验证码" autocomplete="off" class="layui-input">
 							</div>
 							<div class="layui-inline">
-								<img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="../checkcode" />
+								<img class="verifyImg" onclick="this.src=this.src+'?c='+Math.random();" src="../../checkcode" />
 							</div>
 						</div>
 						<div class="layui-form-item m-login-btn">
@@ -49,7 +49,7 @@
 					<!-- 出错显示的信息框 -->
 					<div class="alert alert-warning alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert" >
-							<span>&times;</span></button>
+							<span>${Error_Message}</span></button>
 						<strong></strong>
 					</div>
 				</div>
@@ -57,8 +57,8 @@
 			</div>
 		</div>
 		<script src="../../static/admin/layui/layui.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../../js/vue-2.6.10.js"></script>
-		<script src="../../js/jquery-3.3.1.min.js"></script>
+		<script src="../../static/admin/js/vue-2.6.10.js"></script>
+		<script src="../../static/admin/js/jquery-3.3.1.min.js"></script>
 		<script>
 			layui.use(['form', 'layedit', 'laydate'], function() {
 				var form = layui.form(),

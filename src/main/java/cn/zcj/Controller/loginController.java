@@ -1,6 +1,7 @@
 package cn.zcj.Controller;
 
 import cn.zcj.Service.UserService;
+import cn.zcj.domain.login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,26 +20,35 @@ import java.util.Random;
 public class loginController {
     @Autowired
     private UserService userService;
-
+    /*
+        登录方法
+     */
     @RequestMapping("login")
-    public ModelAndView login(String username, String password, String type, String verity, HttpSession session){
+    public ModelAndView login(login login,HttpSession session){
+        System.out.println(login);
+        System.out.println(userService.login(login.getUsername(),login.getPassword(),login.getType()));
+        System.out.println(session.getAttribute("CHECKCODE_SERVER"));
         ModelAndView modelAndView = new ModelAndView();
-        if ( verity.equals(session.getAttribute("CHECKCODE_SERVER"))){
-            if(userService.login(username,password,type)){
-                modelAndView.addObject("user",username);
-                modelAndView.setViewName("admin/index/index.html");
+        if ( login.getVerity().equalsIgnoreCase((String) session.getAttribute("CHECKCODE_SERVER"))){
+            if(userService.login(login.getUsername(),login.getPassword(),login.getType())){
+                modelAndView.addObject("user",login.getUsername());
+                System.out.println("跳转index");
+                modelAndView.setViewName("redirect:/admin/index/index.html");
                 return modelAndView;
             }else {
                 modelAndView.addObject("Error_Message","用户名密码错误");
-                modelAndView.setViewName("admin/index/login.html");
+                modelAndView.setViewName("redirect:/admin/index/login.html");
                 return modelAndView;
             }
         } else {
             modelAndView.addObject("Error_Message","验证码错误");
-            modelAndView.setViewName("admin/index/login.html");
+            modelAndView.setViewName("redirect:/admin/index/login.html");
             return modelAndView;
         }
     }
+    /*
+        验证码方法
+     */
     @RequestMapping("checkcode")
     public void checkcode(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
