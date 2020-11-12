@@ -3,6 +3,7 @@ package cn.zcj.Controller;
 import cn.zcj.Service.UserService;
 import cn.zcj.domain.login;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,32 +21,49 @@ import java.util.Random;
 public class loginController {
     @Autowired
     private UserService userService;
+
     /*
         登录方法
      */
     @RequestMapping("login")
-    public ModelAndView login(login login,HttpSession session){
-        System.out.println(login);
-        System.out.println(userService.login(login.getUsername(),login.getPassword(),login.getType()));
-        System.out.println(session.getAttribute("CHECKCODE_SERVER"));
+    public ModelAndView login(login login, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
-        if ( login.getVerity().equalsIgnoreCase((String) session.getAttribute("CHECKCODE_SERVER"))){
-            if(userService.login(login.getUsername(),login.getPassword(),login.getType())){
-                modelAndView.addObject("user",login.getUsername());
-                System.out.println("跳转index");
-                modelAndView.setViewName("redirect:/admin/index/index.html");
-                return modelAndView;
-            }else {
-                modelAndView.addObject("Error_Message","用户名密码错误");
-                modelAndView.setViewName("redirect:/admin/index/login.html");
-                return modelAndView;
+        if (login.getVerity().equalsIgnoreCase((String) session.getAttribute("CHECKCODE_SERVER"))) {
+            if (login.getType().equals("root")) {
+                if (userService.loginuser(login.getUsername(), login.getPassword())) {
+                    session.setAttribute("user",login.getUsername());
+                    System.out.println("跳转root");
+                    modelAndView.setViewName("/admin/index/root.html");
+                    return modelAndView;
+                }
+            } else if (login.getType().equals("teacher")) {
+                if (userService.loginteacher(login.getUsername(), login.getPassword())) {
+                    session.setAttribute("user", login.getUsername());
+                    System.out.println("跳转teacher");
+                    modelAndView.setViewName("/admin/index/teacher.html");
+                    return modelAndView;
+                }
+            }else if (login.getType().equals("student")) {
+                if (userService.loginstudent(login.getUsername(), login.getPassword())) {
+                    session.setAttribute("user", login.getUsername());
+                    System.out.println("跳转teacher");
+                    modelAndView.setViewName("/admin/index/student.html");
+                    return modelAndView;
+                }
             }
+            modelAndView.addObject("Error_Message", "用户名密码错误");
+            modelAndView.setViewName("/admin/index/login.jsp");
+            return modelAndView;
+
         } else {
-            modelAndView.addObject("Error_Message","验证码错误");
-            modelAndView.setViewName("redirect:/admin/index/login.html");
+            modelAndView.addObject("Error_Message", "验证码错误");
+            modelAndView.setViewName("/admin/index/login.jsp");
             return modelAndView;
         }
+
     }
+
+
     /*
         验证码方法
      */

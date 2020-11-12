@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c"  uri ="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -7,6 +10,7 @@
 		<title>后台登录</title>
 		<link rel="stylesheet" type="text/css" href="../../static/admin/layui/css/layui.css" />
 		<link rel="stylesheet" type="text/css" href="../../static/admin/css/login.css" />
+		<link href="../../static/admin/css/bootstrap.min.css" rel="stylesheet">
 	</head>
 
 	<body>
@@ -49,8 +53,8 @@
 					<!-- 出错显示的信息框 -->
 					<div class="alert alert-warning alert-dismissible" role="alert">
 						<button type="button" class="close" data-dismiss="alert" >
-							<span>${Error_Message}</span></button>
-						<strong></strong>
+							<span>&times;</span></button>
+						<strong>${Error_Message}</strong>
 					</div>
 				</div>
 				<p class="copyright">Copyright 2020 by zcj and zhh</p>
