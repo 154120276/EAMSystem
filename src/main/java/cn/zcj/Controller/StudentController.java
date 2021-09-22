@@ -152,19 +152,9 @@ public class StudentController {
         ModelAndView modelAndView = new ModelAndView();
         //查询出所有班级的列表
         String user =(String) session.getAttribute("user");
-        int gid=userService.getgidbyuser(user);
-        String grades=userService.getgrades(gid);
-        String[] split = grades.split(";");
-        List<grade> gradelist=new ArrayList<>();
-        for (String s : split) {
-            String[] split1 = s.split(":");
-            grade grade = new grade();
-            grade.setName(split1[0]);
-            grade.setScore(split1[1]);
-            gradelist.add(grade);
-        }
-
-        modelAndView.addObject("grades",gradelist);
+        int sid=userService.getsidbyuser(user);
+        List<grade> grades=userService.getgrades(sid);
+        modelAndView.addObject("grades",grades);
         modelAndView.setViewName("/admin/index/gradeslist.jsp");
         return modelAndView;
     }

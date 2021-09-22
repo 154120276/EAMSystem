@@ -43,7 +43,7 @@ public interface UserService {
 
     int findSno(String user);
 
-    int getgidbyuser(String user);
+    int getsidbyuser(String user);
 
-    String getgrades(int gid);
+    List<grade> getgrades(int gid);
 }

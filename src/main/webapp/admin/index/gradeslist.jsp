@@ -45,7 +45,7 @@
         <c:forEach items="${grades}" var="grade" varStatus="s">
             <tr>
                 <td>${grade.name}</td>
-                <td>${grade.score}</td>
+                <td>${grade.grade}</td>
             </tr>
         </c:forEach>
 

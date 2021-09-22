@@ -66,7 +66,7 @@ public interface StudentMapper {
     @Select("select * from bodysidescore where id=#{tid}")
     public PEScores findPEScores(int tid);
 
-    @Select("select * from #{sno}course")
+    @Select("select * from course where sno=#{sno}")
     @Results({
         @Result(id = true,column = "id", property = "id"),//id=true表示为主键
         @Result(column = "Cno", property = "Cno"),
@@ -91,7 +91,7 @@ public interface StudentMapper {
     @Select("select Sno from student where username=#{username}")
     public int findSno(String username);
 
-    @Select("select * from #{sno}course where dayofweek=#{dayofweek}")
+    @Select("select * from course where dayofweek=#{dayofweek} and sno=#{sno}")
     @Results({
             @Result(id = true,column = "id", property = "id"),//id=true表示为主键
             @Result(column = "Cno", property = "Cno"),
@@ -110,11 +110,26 @@ public interface StudentMapper {
     })
     public List<course> findcourses2(int sno, int dayofweek);
 
-    @Select("select gid from student where username=#{username}")
+    @Select("select id from student where username=#{username}")
     public int findgidbyuser(String username);
 
-    @Select("select grade from grades where id=#{id}")
-    public String findgrades(int id);
+    @Select("select * from grades where sid=#{id}")
+    @Results({
+            @Result(id = true,column = "id", property = "id"),//id=true表示为主键
+            @Result(column = "cno", property = "cno"),
+            @Result(
+                    property = "name",//要封装的属性名称
+                    column ="cno" ,//根据哪个字段去查询orders表的数据
+                    javaType = String.class,//要封装的实体类型
+                    //select 属性，代表查询哪个接口的方法获得数据
+                    many = @Many(select = "findcoursename")
+            ),
+            @Result(column = "sid", property = "sid"),
+            @Result(column = "grade", property = "grade"),
+            @Result(column = "updateby", property = "updateby"),
+
+    })
+    public List<grade> findgrades(int id);
 
 
     @Select("select * from student where id = #{id}")

@@ -61,20 +61,11 @@ public class test {
         PageInfo<course> pageInfo = new PageInfo<>(userService.findCoures(2,1));
         System.out.println(pageInfo.getList());*/
 
-        int gid=userService.getgidbyuser("zhuchangjiang");
-        String grades=userService.getgrades(gid);
+        int sid=userService.getsidbyuser("zhuchangjiang");
+        List<grade> grades=userService.getgrades(sid);
         System.out.println(grades);
         System.out.println("==========================================================================");
-        String[] split = grades.split(";");
-        List<grade> list=new ArrayList<>();
-        for (String s : split) {
-            String[] split1 = s.split(":");
-            grade grade = new grade();
-            grade.setName(split1[0]);
-            grade.setScore(split1[1]);
-            list.add(grade);
-        }
-        for (grade grade : list) {
+        for (grade grade : grades) {
             System.out.println(grade);
         }
     }

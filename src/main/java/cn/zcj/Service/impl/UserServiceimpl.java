@@ -82,12 +82,12 @@ public class UserServiceimpl implements UserService {
     }
 
     @Override
-    public int getgidbyuser(String user) {
+    public int getsidbyuser(String user) {
         return studentMapper.findgidbyuser(user);
     }
 
     @Override
-    public String getgrades(int gid) {
+    public List<grade> getgrades(int gid) {
         return studentMapper.findgrades(gid);
     }
 
