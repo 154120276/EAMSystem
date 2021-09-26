@@ -3,6 +3,7 @@ package cn.zcj.Controller;
 import cn.zcj.Service.UserService;
 import cn.zcj.domain.BanJi;
 import cn.zcj.domain.classteacher;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+@Api(value = "班级接口")
 @RestController
 public class classController {
     @Autowired

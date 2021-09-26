@@ -2,6 +2,7 @@ package cn.zcj.Controller;
 
 import cn.zcj.Service.UserService;
 import cn.zcj.domain.login;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Random;
 
+@Api(value = "login接口,登录相关")
 @RestController
 public class loginController {
     @Autowired

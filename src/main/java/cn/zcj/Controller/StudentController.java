@@ -6,6 +6,7 @@ import cn.zcj.Service.UserService;
 import cn.zcj.domain.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
+@Api(value = "学生相关接口")
 @RestController
 public class StudentController {
     @Autowired
@@ -120,8 +122,10 @@ public class StudentController {
     @RequestMapping("courses")
     public ModelAndView showCourses(HttpServletRequest request, HttpSession session){
         ModelAndView modelAndView = new ModelAndView();
-        String pageNum = request.getParameter("pageNum");//当前页码
-        String rows = request.getParameter("rows");//每页条数
+        String pageNum = request.getParameter("pageNum");
+        //当前页码
+        String rows = request.getParameter("rows");
+        //每页条数
         String dayofweek = request.getParameter("dayofweek");
         String user =(String) session.getAttribute("user");
         System.out.println(dayofweek+"--------------------------------------------------------------");
