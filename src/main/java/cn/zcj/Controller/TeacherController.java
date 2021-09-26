@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Api(value = "教师相关接口")
 @RestController
 public class TeacherController {

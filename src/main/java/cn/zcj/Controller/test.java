@@ -61,13 +61,11 @@ public class test {
         PageInfo<course> pageInfo = new PageInfo<>(userService.findCoures(2,1));
         System.out.println(pageInfo.getList());*/
 
-        int sid=userService.getsidbyuser("zhuchangjiang");
-        List<grade> grades=userService.getgrades(sid);
-        System.out.println(grades);
-        System.out.println("==========================================================================");
-        for (grade grade : grades) {
-            System.out.println(grade);
+        List<Student> students = userService.findTStudents(2,"%%");
+        for (Student student : students) {
+            System.out.println(student);
         }
+
     }
 
 
