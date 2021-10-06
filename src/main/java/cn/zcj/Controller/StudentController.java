@@ -184,4 +184,27 @@ public class StudentController {
         studentService.updateStudentById(student.getId(),student);
         return "success";
     }
+
+    @RequestMapping("anno")
+    public ModelAndView showannolist(HttpSession session) {
+        String user = (String) session.getAttribute("user");
+        ModelAndView modelAndView = new ModelAndView();
+        int sno = userService.findSno(user);
+        List<announcement> anno = userService.getAnnouncement(sno);
+        modelAndView.addObject("anno", anno);
+        modelAndView.setViewName("/admin/index/anno.jsp");
+        return modelAndView;
+    }
+
+    @RequestMapping("exam")
+    public ModelAndView showexamlist(HttpSession session) {
+        String user = (String) session.getAttribute("user");
+        ModelAndView modelAndView = new ModelAndView();
+        int sid = studentService.getidbyusername(user);
+        List<examination> exam = userService.getexamination(sid);
+        modelAndView.addObject("exam", exam);
+        modelAndView.setViewName("/admin/index/exam.jsp");
+        return modelAndView;
+    }
+
 }

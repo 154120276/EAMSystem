@@ -46,4 +46,8 @@ public interface UserService {
     int getsidbyuser(String user);
 
     List<grade> getgrades(int gid);
+
+    List<announcement> getAnnouncement(int sno);
+
+    List<examination> getexamination(int sid);
 }

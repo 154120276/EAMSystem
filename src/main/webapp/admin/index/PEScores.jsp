@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c"  uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -33,49 +33,49 @@
 <div class="container">
     <h3 style="text-align: center">体侧成绩</h3>
     <form id="form" action="${pageContext.request.contextPath}/" method="post">
-    <table border="1" class="table table-bordered table-hover">
-        <tr class="success">
+        <table border="1" class="table table-bordered table-hover">
+            <tr class="success">
 
-            <th>编号</th>
-            <th>身高(cm)</th>
-            <th>体重(kg)</th>
-            <th>50m</th>
-            <th>50m分数</th>
-            <th>肺活量</th>
-            <th>肺活量得分</th>
-        </tr>
-        <tr class="success">
+                <th>编号</th>
+                <th>身高(cm)</th>
+                <th>体重(kg)</th>
+                <th>50m</th>
+                <th>50m分数</th>
+                <th>肺活量</th>
+                <th>肺活量得分</th>
+            </tr>
+            <tr class="success">
 
-            <th>${pe.id}</th>
-            <th>${pe.hight}</th>
-            <th>${pe.weight}</th>
-            <th>${pe.shortrun}</th>
-            <th>${pe.shortrunscore}</th>
-            <th>${pe.lungcapacity}</th>
-            <th>${pe.lungcapacityscore}</th>
-        </tr>
-        <tr class="success">
+                <th>${pe.id}</th>
+                <th>${pe.hight}</th>
+                <th>${pe.weight}</th>
+                <th>${pe.shortrun}</th>
+                <th>${pe.shortrunscore}</th>
+                <th>${pe.lungcapacity}</th>
+                <th>${pe.lungcapacityscore}</th>
+            </tr>
+            <tr class="success">
 
-            <th>跳远(cm)</th>
-            <th>跳远得分</th>
-            <th>引体向上(次,女为仰卧起坐)</th>
-            <th>引体向上得分</th>
-            <th>1000m(女为800m)</th>
-            <th>1000m分数</th>
-            <th>总得分</th>
-        </tr>
-        <tr class="success">
-            <th>${pe.jump}</th>
-            <th>${pe.jumpscore}</th>
-            <th>${pe.pull_up}</th>
-            <th>${pe.pull_upscore}</th>
-            <th>${pe.longrun}</th>
-            <th>${pe.longrunscore}</th>
-            <th>${pe.longrunscore*0.25+pe.pull_upscore*0.15+pe.lungcapacityscore*0.2+pe.shortrunscore*0.25+pe.jumpscore*0.15}</th>
-        </tr>
+                <th>跳远(cm)</th>
+                <th>跳远得分</th>
+                <th>引体向上(次,女为仰卧起坐)</th>
+                <th>引体向上得分</th>
+                <th>1000m(女为800m)</th>
+                <th>1000m分数</th>
+                <th>总得分</th>
+            </tr>
+            <tr class="success">
+                <th>${pe.jump}</th>
+                <th>${pe.jumpscore}</th>
+                <th>${pe.pull_up}</th>
+                <th>${pe.pull_upscore}</th>
+                <th>${pe.longrun}</th>
+                <th>${pe.longrunscore}</th>
+                <th>${pe.longrunscore*0.25+pe.pull_upscore*0.15+pe.lungcapacityscore*0.2+pe.shortrunscore*0.25+pe.jumpscore*0.15}</th>
+            </tr>
 
 
-    </table>
+        </table>
     </form>
 
 </div>

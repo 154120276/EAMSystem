@@ -16,11 +16,11 @@ public interface TeacherService {
 
     public boolean deleteTeacherById(Integer id);
 
-    public boolean updateTeacherById(Integer id,Teacher teacher);
+    public boolean updateTeacherById(Integer id, Teacher teacher);
 
     public boolean addTeacher(Teacher teacher);
 
-    public boolean addCourse(String courseName,float credits);
+    public boolean addCourse(String courseName, float credits);
 
     public int getidbyusername(String user);
 }

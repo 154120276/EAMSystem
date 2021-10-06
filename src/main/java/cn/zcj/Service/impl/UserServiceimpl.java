@@ -19,23 +19,25 @@ public class UserServiceimpl implements UserService {
     private ClassMapper classMapper;
     @Autowired
     private StudentMapper studentMapper;
+
     /*
         登录管理员方法
      */
     @Override
     public boolean loginuser(String username, String password) {
-              if (password.equals(loginMapper.findinuser(username))){
-                  return true;
-              }
+        if (password.equals(loginMapper.findinuser(username))) {
+            return true;
+        }
 
         return false;
     }
+
     /*
         登录教师方法
      */
     @Override
     public boolean loginteacher(String username, String password) {
-        if (password.equals(loginMapper.findinteacher(username))){
+        if (password.equals(loginMapper.findinteacher(username))) {
             return true;
         }
 
@@ -44,11 +46,12 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public boolean loginstudent(String username, String password) {
-        if (password.equals(loginMapper.findinstudent(username))){
+        if (password.equals(loginMapper.findinstudent(username))) {
             return true;
         }
         return false;
     }
+
     /*
         tid获取
      */
@@ -56,6 +59,7 @@ public class UserServiceimpl implements UserService {
     public int getTid(String user) {
         return studentMapper.findTid(user);
     }
+
     /*
         体侧查询
      */
@@ -63,15 +67,16 @@ public class UserServiceimpl implements UserService {
     public PEScores findPEScores(int tid) {
         return studentMapper.findPEScores(tid);
     }
+
     /*
         返回所有课程
      */
     @Override
-    public List<course> findCoures(int sno,int dayofweek) {
+    public List<course> findCoures(int sno, int dayofweek) {
 
-        if (dayofweek!=0){
-            return studentMapper.findcourses2(sno,dayofweek);
-        }else {
+        if (dayofweek != 0) {
+            return studentMapper.findcourses2(sno, dayofweek);
+        } else {
             return studentMapper.findcourses(sno);
         }
     }
@@ -91,6 +96,16 @@ public class UserServiceimpl implements UserService {
         return studentMapper.findgrades(gid);
     }
 
+    @Override
+    public List<announcement> getAnnouncement(int sno) {
+        return classMapper.selectAnnouncement(sno);
+    }
+
+    @Override
+    public List<examination> getexamination(int sid) {
+        return studentMapper.findexamination(sid);
+    }
+
 
     /*
      返回所有班级
@@ -107,6 +122,7 @@ public class UserServiceimpl implements UserService {
     public void classDelete(int sno) {
         classMapper.classDelete(sno);
     }
+
     /*
 
         返回所有老师
@@ -115,13 +131,14 @@ public class UserServiceimpl implements UserService {
     public List<classteacher> findteachers() {
         return classMapper.findteachers();
     }
+
     /*
         添加班级
 
      */
     @Override
     public void addClass(String name, int id) {
-        classMapper.addclass(name,id);
+        classMapper.addclass(name, id);
     }
 
     /*
@@ -130,11 +147,12 @@ public class UserServiceimpl implements UserService {
      */
     @Override
     public List<BanJi> selectclass(String classname) {
-        classname="%"+classname+"%";
+        classname = "%" + classname + "%";
         return classMapper.selectclass(classname);
 
 
     }
+
     /*
     修改班级老师
     */
@@ -154,13 +172,14 @@ public class UserServiceimpl implements UserService {
 
     @Override
     public List<Student> findTStudents(int Sno, String name) {
-        return studentMapper.findTStudent(Sno,name);
+        return studentMapper.findTStudent(Sno, name);
     }
 
     @Override
     public List<BanJi> findclass() {
         return studentMapper.findclass();
     }
+
     /*
         根据id找学生
      */
@@ -168,6 +187,7 @@ public class UserServiceimpl implements UserService {
     public Student findStudent(int id) {
         return studentMapper.findstudentbyid(id);
     }
+
     /*
         更新学生
      */

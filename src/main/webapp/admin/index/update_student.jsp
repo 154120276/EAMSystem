@@ -33,11 +33,11 @@
         </div>
         <div class="form-group">
             <label>姓名：</label>
-            <input type="text"  class="form-control" id="name" value="${student.name}" name="name"/>
+            <input type="text" class="form-control" id="name" value="${student.name}" name="name"/>
         </div>
         <div class="form-group">
             <label>班级：</label>
-            <select name="sno" class="form-control" >
+            <select name="sno" class="form-control">
                 <c:forEach items="${classes}" var="class" varStatus="s">
                     <option value="${class.sno}">${class.classname}</option>
                 </c:forEach>
@@ -45,7 +45,7 @@
         </div>
         <div class="form-group">
             <label>电话号码：</label>
-            <input type="text"  class="form-control" id="phonenumber" value="${student.phonenumber}" name="phonenumber"/>
+            <input type="text" class="form-control" id="phonenumber" value="${student.phonenumber}" name="phonenumber"/>
         </div>
         <div class="form-group">
             <label>用户名：</label>
@@ -57,9 +57,10 @@
         </div>
 
         <div class="form-group" style="text-align: center">
-            <input class="btn btn-primary" type="submit" value="提交" />
-            <input class="btn btn-default" type="reset" value="重置" />
-            <a href="${pageContext.request.contextPath}/students"><input class="btn btn-default" type="button" value="返回" /></a>
+            <input class="btn btn-primary" type="submit" value="提交"/>
+            <input class="btn btn-default" type="reset" value="重置"/>
+            <a href="${pageContext.request.contextPath}/students"><input class="btn btn-default" type="button"
+                                                                         value="返回"/></a>
         </div>
     </form>
 </div>

@@ -18,10 +18,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
         HttpSession session = request.getSession();
-        String user = (String)session.getAttribute("user");
-        if( user==null || user.equals("") ){
-            request.setAttribute("Error_Message","请先登录！别耍小聪明");
-            request.getRequestDispatcher("/admin/index/login.jsp").forward(request,response);
+        String user = (String) session.getAttribute("user");
+        if (user == null || user.equals("")) {
+            request.setAttribute("Error_Message", "请先登录！别耍小聪明");
+            request.getRequestDispatcher("/admin/index/login.jsp").forward(request, response);
             return false;
         }
         //业务代码

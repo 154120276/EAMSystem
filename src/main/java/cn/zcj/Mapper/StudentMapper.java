@@ -13,11 +13,11 @@ public interface StudentMapper {
 
     @Select("select * from student where name like #{name}")
     @Results({
-            @Result(id = true,column = "id", property = "id"),//id=true表示为主键
+            @Result(id = true, column = "id", property = "id"),//id=true表示为主键
             @Result(column = "Sno", property = "Sno"),
             @Result(
                     property = "classname",//要封装的属性名称
-                    column ="Sno" ,//根据哪个字段去查询orders表的数据
+                    column = "Sno",//根据哪个字段去查询orders表的数据
                     javaType = String.class,//要封装的实体类型
                     //select 属性，代表查询哪个接口的方法获得数据
                     many = @Many(select = "findclassname")
@@ -33,11 +33,11 @@ public interface StudentMapper {
 
     @Select("select * from student where Sno=#{Sno} and name like#{name}")
     @Results({
-            @Result(id = true,column = "id", property = "id"),//id=true表示为主键
+            @Result(id = true, column = "id", property = "id"),//id=true表示为主键
             @Result(column = "Sno", property = "Sno"),
             @Result(
                     property = "classname",//要封装的属性名称
-                    column ="Sno" ,//根据哪个字段去查询orders表的数据
+                    column = "Sno",//根据哪个字段去查询orders表的数据
                     javaType = String.class,//要封装的实体类型
                     //select 属性，代表查询哪个接口的方法获得数据
                     many = @Many(select = "findclassname")
@@ -49,7 +49,7 @@ public interface StudentMapper {
             @Result(column = "password", property = "password"),
             @Result(column = "tid", property = "tid")
     })
-    public List<Student> findTStudent(int Sno,String name);
+    public List<Student> findTStudent(int Sno, String name);
 
     @Select("select Sno,classname from class")
     public List<BanJi> findclass();
@@ -68,20 +68,20 @@ public interface StudentMapper {
 
     @Select("select * from course where sno=#{sno}")
     @Results({
-        @Result(id = true,column = "id", property = "id"),//id=true表示为主键
-        @Result(column = "Cno", property = "Cno"),
-        @Result(
-                property = "name",//要封装的属性名称
-                column ="Cno" ,//根据哪个字段去查询orders表的数据
-                javaType = String.class,//要封装的实体类型
-                //select 属性，代表查询哪个接口的方法获得数据
-                many = @Many(select = "findcoursename")
-        ),
-        @Result(column = "dayofweek", property = "dayofweek"),
-        @Result(column = "timeofday", property = "timeofday"),
-        @Result(column = "phonenumber", property = "phonenumber"),
-        @Result(column = "place", property = "place"),
-        @Result(column = "teacher", property = "teacher"),
+            @Result(id = true, column = "id", property = "id"),//id=true表示为主键
+            @Result(column = "Cno", property = "Cno"),
+            @Result(
+                    property = "name",//要封装的属性名称
+                    column = "Cno",//根据哪个字段去查询orders表的数据
+                    javaType = String.class,//要封装的实体类型
+                    //select 属性，代表查询哪个接口的方法获得数据
+                    many = @Many(select = "findcoursename")
+            ),
+            @Result(column = "dayofweek", property = "dayofweek"),
+            @Result(column = "timeofday", property = "timeofday"),
+            @Result(column = "phonenumber", property = "phonenumber"),
+            @Result(column = "place", property = "place"),
+            @Result(column = "teacher", property = "teacher"),
     })
     public List<course> findcourses(int sno);
 
@@ -93,11 +93,11 @@ public interface StudentMapper {
 
     @Select("select * from course where dayofweek=#{dayofweek} and sno=#{sno}")
     @Results({
-            @Result(id = true,column = "id", property = "id"),//id=true表示为主键
+            @Result(id = true, column = "id", property = "id"),//id=true表示为主键
             @Result(column = "Cno", property = "Cno"),
             @Result(
                     property = "name",//要封装的属性名称
-                    column ="Cno" ,//根据哪个字段去查询orders表的数据
+                    column = "Cno",//根据哪个字段去查询orders表的数据
                     javaType = String.class,//要封装的实体类型
                     //select 属性，代表查询哪个接口的方法获得数据
                     many = @Many(select = "findcoursename")
@@ -138,9 +138,12 @@ public interface StudentMapper {
     @Update("update student set name=#{student.name},sex=#{student.sex}, " +
             "phonenumber=#{student.phonenumber}, " +
             "username=#{student.username},password=#{student.password} where id=#{id}")
-    public boolean updateTeacherById(Integer id,Student student);
+    public boolean updateTeacherById(Integer id, Student student);
 
     @Select("select id from student where username=#{user}")
     int findidbyuser(String user);
+
+    @Select("select * from examination where sid=#{id}")
+    List<examination> findexamination(int id);
 }
 

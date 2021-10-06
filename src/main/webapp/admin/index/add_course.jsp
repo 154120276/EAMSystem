@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c"  uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!-- HTML5文档-->
 <!DOCTYPE html>
@@ -31,18 +31,18 @@
     </style>
 
     <script>
-        function addCourse(courseName,credits){
+        function addCourse(courseName, credits) {
             $.post("/addCourse",
-                "courseName="+courseName+"&credits="+credits,
-                function(data) {
-                if (data == 'success') {
-                    alert('添加课程成功');
-                    document.getElementById("result").innerHTML="“"+courseName+"”" + "添加成功";
-                } else {
-                    alert('1111111')
-                    document.getElementById("result").innerHTML='“'+courseName+'”' + '添加失败，已有该课程';
-                }
-            })
+                "courseName=" + courseName + "&credits=" + credits,
+                function (data) {
+                    if (data == 'success') {
+                        alert('添加课程成功');
+                        document.getElementById("result").innerHTML = "“" + courseName + "”" + "添加成功";
+                    } else {
+                        alert('1111111')
+                        document.getElementById("result").innerHTML = '“' + courseName + '”' + '添加失败，已有该课程';
+                    }
+                })
         }
     </script>
 </head>
@@ -62,9 +62,10 @@
 
         <div style="text-align: center" id="result"/>
         <div class="form-group" style="text-align: center">
-            <input class="btn btn-primary" type="button" onclick="javascript:addCourse(courseName.value,credits.value);" value="提交" />
-            <input class="btn btn-default" type="reset" value="重置" />
-            <a><input class="btn btn-default" type="button" onclick="javascript:history.back(-1);" value="返回" /></a>
+            <input class="btn btn-primary" type="button" onclick="javascript:addCourse(courseName.value,credits.value);"
+                   value="提交"/>
+            <input class="btn btn-default" type="reset" value="重置"/>
+            <a><input class="btn btn-default" type="button" onclick="javascript:history.back(-1);" value="返回"/></a>
         </div>
     </form>
 </div>

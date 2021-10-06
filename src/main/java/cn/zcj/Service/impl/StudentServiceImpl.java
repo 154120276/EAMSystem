@@ -3,8 +3,11 @@ package cn.zcj.Service.impl;
 import cn.zcj.Mapper.StudentMapper;
 import cn.zcj.Service.StudentService;
 import cn.zcj.domain.Student;
+import cn.zcj.domain.announcement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 
 @Service("studentService")
@@ -22,8 +25,8 @@ public class StudentServiceImpl implements StudentService {
 
 
     @Override
-    public boolean updateStudentById(Integer id,Student student) {
-        studentMapper.updateTeacherById(id,student);
+    public boolean updateStudentById(Integer id, Student student) {
+        studentMapper.updateTeacherById(id, student);
         return true;
     }
 

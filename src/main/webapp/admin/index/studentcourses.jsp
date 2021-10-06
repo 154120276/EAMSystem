@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c"  uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -29,13 +29,13 @@
         }
     </style>
     <script>
-        window.onload=function () {
+        window.onload = function () {
             //全选全不选按钮
-            document.getElementById("firstCK").onclick=function () {
-                    //获取所有CB
-                var cbs=document.getElementsByName("uid");
-                for (let i = 0; i <cbs.length; i++) {
-                        cbs[i].checked=this.checked;
+            document.getElementById("firstCK").onclick = function () {
+                //获取所有CB
+                var cbs = document.getElementsByName("uid");
+                for (let i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = this.checked;
                 }
             }
         }
@@ -47,8 +47,8 @@
     <div style="float:left;margin: 5px">
         <form class="form-inline" action="${pageContext.request.contextPath}/courses" method="post">
             <div class="form-group">
-                <label >星期</label>
-                <select name="dayofweek" class="form-control" >
+                <label>星期</label>
+                <select name="dayofweek" class="form-control">
                     <option value="1">一</option>
                     <option value="2">二</option>
                     <option value="3">三</option>
@@ -62,68 +62,71 @@
         </form>
     </div>
     <form id="form" action="${pageContext.request.contextPath}/" method="post">
-    <table border="1" class="table table-bordered table-hover">
-        <tr class="success">
-            <th><input type="checkbox" id="firstCK"></th>
-            <th>编号</th>
-            <th>课程编号</th>
-            <th>课程名</th>
-            <th>星期几</th>
-            <th>上课时间</th>
-            <th>地点</th>
-            <th>教师</th>
-        </tr>
-        <c:forEach items="${pb.list}" var="course" varStatus="s">
-            <tr>
-                <th><input type="checkbox" name="uid" value="${course.id}"></th>
-                <td>${s.count}</td>
-                <td>${course.cno}</td>
-                <td>${course.name}</td>
-                <td>${course.dayofweek}</td>
-                <td>${course.timeofday}</td>
-                <td>${course.place}</td>
-                <td>${course.teacher}</td>
-
+        <table border="1" class="table table-bordered table-hover">
+            <tr class="success">
+                <th><input type="checkbox" id="firstCK"></th>
+                <th>编号</th>
+                <th>课程编号</th>
+                <th>课程名</th>
+                <th>星期几</th>
+                <th>上课时间</th>
+                <th>地点</th>
+                <th>教师</th>
             </tr>
-        </c:forEach>
+            <c:forEach items="${pb.list}" var="course" varStatus="s">
+                <tr>
+                    <th><input type="checkbox" name="uid" value="${course.id}"></th>
+                    <td>${s.count}</td>
+                    <td>${course.cno}</td>
+                    <td>${course.name}</td>
+                    <td>${course.dayofweek}</td>
+                    <td>${course.timeofday}</td>
+                    <td>${course.place}</td>
+                    <td>${course.teacher}</td>
+
+                </tr>
+            </c:forEach>
 
 
-    </table>
+        </table>
     </form>
     <div>
         <nav>
             <ul class="pagination">
                 <c:if test="${pb.pageNum == 1}">
-                    <li class="disabled">
-                        <a href="#" aria-label="Previous">
-                </c:if>
+                <li class="disabled">
+                    <a href="#" aria-label="Previous">
+                        </c:if>
 
-                <c:if test="${pb.pageNum != 1}">
-                    <li>
-                    <a href="${pageContext.request.contextPath}/courses?pageNum=${pb.pageNum-1}&rows=5" aria-label="Previous">
-                </c:if>
+                        <c:if test="${pb.pageNum != 1}">
+                <li>
+                    <a href="${pageContext.request.contextPath}/courses?pageNum=${pb.pageNum-1}&rows=5"
+                       aria-label="Previous">
+                        </c:if>
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
 
-               <c:forEach begin="1" end="${pb.pages}" var="i">
-                   <c:if test="${pb.pageNum ==i}">
-                       <li class="active"><a href="${pageContext.request.contextPath}/courses?pageNum=${i}&rows=5">${i}</a></li>
-                   </c:if>
-                   <c:if test="${pb.pageNum !=i}">
-                       <li ><a href="${pageContext.request.contextPath}/courses?pageNum=${i}&rows=5">${i}</a></li>
-                   </c:if>
-               </c:forEach>
-
-                    <c:if test="${pb.pageNum == pb.pages}">
-                    <li class="disabled">
-                        <a href="#" aria-label="Previous">
+                <c:forEach begin="1" end="${pb.pages}" var="i">
+                    <c:if test="${pb.pageNum ==i}">
+                        <li class="active"><a
+                                href="${pageContext.request.contextPath}/courses?pageNum=${i}&rows=5">${i}</a></li>
                     </c:if>
+                    <c:if test="${pb.pageNum !=i}">
+                        <li><a href="${pageContext.request.contextPath}/courses?pageNum=${i}&rows=5">${i}</a></li>
+                    </c:if>
+                </c:forEach>
 
-                    <c:if test="${pb.pageNum != pb.pages}">
-                    <li>
-                        <a href="${pageContext.request.contextPath}/courses?pageNum=${pb.pageNum+1}&rows=5" aria-label="Previous">
-                     </c:if>
+                <c:if test="${pb.pageNum == pb.pages}">
+                <li class="disabled">
+                    <a href="#" aria-label="Previous">
+                        </c:if>
+
+                        <c:if test="${pb.pageNum != pb.pages}">
+                <li>
+                    <a href="${pageContext.request.contextPath}/courses?pageNum=${pb.pageNum+1}&rows=5"
+                       aria-label="Previous">
+                        </c:if>
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>

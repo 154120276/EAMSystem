@@ -41,8 +41,8 @@ public class TeacherServiceimpl implements TeacherService {
     }
 
     @Override
-    public boolean updateTeacherById(Integer id,Teacher teacher) {
-        teacherMapper.updateTeacherById(id,teacher);
+    public boolean updateTeacherById(Integer id, Teacher teacher) {
+        teacherMapper.updateTeacherById(id, teacher);
         return true;
     }
 
@@ -54,8 +54,8 @@ public class TeacherServiceimpl implements TeacherService {
 
     @Override
     public boolean addCourse(String courseName, float credits) {
-        if(teacherMapper.selectCourse(courseName)==0){
-            teacherMapper.addCourse(courseName,credits);
+        if (teacherMapper.selectCourse(courseName) == 0) {
+            teacherMapper.addCourse(courseName, credits);
             return true;
         }
         return false;

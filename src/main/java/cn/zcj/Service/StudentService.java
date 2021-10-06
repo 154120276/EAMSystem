@@ -1,12 +1,17 @@
 package cn.zcj.Service;
 
 import cn.zcj.domain.Student;
+import cn.zcj.domain.announcement;
+
+import java.util.List;
 
 public interface StudentService {
 
-    public Student findStudentById(Integer id);
+    Student findStudentById(Integer id);
 
-    public boolean updateStudentById(Integer id, Student student);
+    boolean updateStudentById(Integer id, Student student);
 
     int getidbyusername(String user);
+
+
 }

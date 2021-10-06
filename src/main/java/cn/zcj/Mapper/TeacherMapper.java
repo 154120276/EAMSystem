@@ -28,14 +28,14 @@ public interface TeacherMapper {
     @Update("update teacher set name=#{teacher.name},sex=#{teacher.sex}, " +
             "phonenumber=#{teacher.phonenumber},email=#{teacher.email}, " +
             "username=#{teacher.username},password=#{teacher.password} where id=#{id}")
-    public boolean updateTeacherById(Integer id,Teacher teacher);
+    public boolean updateTeacherById(Integer id, Teacher teacher);
 
     @Insert("insert into teacher(name,sex,phonenumber,email,username,password)values(#{name},#{sex}," +
             "#{phonenumber},#{email},#{username},#{password})")
     public boolean addTeacher(Teacher teacher);
 
     @Insert("insert into courses(name,credits)values(#{courseName},#{credits})")
-    public boolean addCourse(String courseName,float credits);
+    public boolean addCourse(String courseName, float credits);
 
     @Select("select count(*) from courses where name=#{courseName}")
     public int selectCourse(String courseName);

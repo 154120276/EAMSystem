@@ -65,7 +65,9 @@ public class test {
         for (Student student : students) {
             System.out.println(student);
         }
-
+        for (grade grade : list) {
+            System.out.println(grade);
+        }
     }
 
 

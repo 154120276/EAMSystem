@@ -34,10 +34,9 @@
         </div>
 
 
-
         <div class="form-group">
             <label>班主任：</label>
-            <select name="teacherid" class="form-control" >
+            <select name="teacherid" class="form-control">
                 <c:forEach items="${classteachers}" var="teacher" varStatus="s">
                     <option value="${teacher.id}">${teacher.name}</option>
                 </c:forEach>
@@ -45,12 +44,10 @@
         </div>
 
 
-
-
         <div class="form-group" style="text-align: center">
-            <input class="btn btn-primary" type="submit" value="提交" />
-            <input class="btn btn-default" type="reset" value="重置" />
-            <a href="${pageContext.request.contextPath}/class"><input class="btn btn-default" type="button" value="返回" /></a>
+            <input class="btn btn-primary" type="submit" value="提交"/>
+            <input class="btn btn-default" type="reset" value="重置"/>
+            <a href="${pageContext.request.contextPath}/class"><input class="btn btn-default" type="button" value="返回"/></a>
         </div>
     </form>
 </div>

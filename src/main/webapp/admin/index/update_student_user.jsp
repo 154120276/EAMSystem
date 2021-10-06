@@ -17,12 +17,12 @@
     <script src="../../static/admin/js/bootstrap.js"></script>
 
     <script>
-        function updateStudentUser(id,name,sex,phonenumber,username,password){
+        function updateStudentUser(id, name, sex, phonenumber, username, password) {
             $.post("/updateStudentUser",
-                "id="+id+"&name="+name+"&sex="+sex+"&phonenumber="+phonenumber+"&username="+username+"&password="+password,
-                function(data) {
+                "id=" + id + "&name=" + name + "&sex=" + sex + "&phonenumber=" + phonenumber + "&username=" + username + "&password=" + password,
+                function (data) {
                     if (data == 'success') {
-                        document.getElementById("result").innerHTML="修改成功";
+                        document.getElementById("result").innerHTML = "修改成功";
                     }
                 })
         }
@@ -35,45 +35,49 @@
     <h3 style="text-align: center;">修改信息列表</h3>
     <form action="/updateStudentUser" method="post">
         <%--隐藏域 提交id--%>
-        <input type="hidden" name="id" value = ${param.id}>
+        <input type="hidden" name="id" value= ${param.id}>
 
-            <div class="form-group">
-                <input type="hidden" value="${sno}" readonly="readonly" disabled="disabled"/>
-            </div>
+        <div class="form-group">
+            <input type="hidden" value="${sno}" readonly="readonly" disabled="disabled"/>
+        </div>
 
-            <div class="form-group">
-                <label for="nameStudent">姓名：</label>
-                <input type="text" class="form-control" id="nameStudent" name="nameStudent" value="${nameStudent}" placeholder="请输入姓名">
-            </div>
+        <div class="form-group">
+            <label for="nameStudent">姓名：</label>
+            <input type="text" class="form-control" id="nameStudent" name="nameStudent" value="${nameStudent}"
+                   placeholder="请输入姓名">
+        </div>
 
-            <div class="form-group">
-                <label>性别：</label>
-                <input type="radio" name="sex" value="男" checked="checked"/>男
-                <input type="radio" name="sex" value="女"/>女
-            </div>
+        <div class="form-group">
+            <label>性别：</label>
+            <input type="radio" name="sex" value="男" checked="checked"/>男
+            <input type="radio" name="sex" value="女"/>女
+        </div>
 
-            <div class="form-group">
-                <label for="phonenumber">手机号：</label>
-                <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="${phonenumber}" placeholder="请输入手机号">
-            </div>
+        <div class="form-group">
+            <label for="phonenumber">手机号：</label>
+            <input type="text" class="form-control" id="phonenumber" name="phonenumber" value="${phonenumber}"
+                   placeholder="请输入手机号">
+        </div>
 
-            <div class="form-group">
-                <%--@declare id="username"--%><label for="username">用户名：</label>
-                <input type="text" class="form-control" name="username" value="${username}" placeholder="请输入用户名"/>
-            </div>
+        <div class="form-group">
+            <%--@declare id="username"--%><label for="username">用户名：</label>
+            <input type="text" class="form-control" name="username" value="${username}" placeholder="请输入用户名"/>
+        </div>
 
-            <div class="form-group">
-                <%--@declare id="password"--%><label for="password">密码：</label>
-                <input type="text" class="form-control" name="password" value="${password}" placeholder="请输入密码"/>
-            </div>
+        <div class="form-group">
+            <%--@declare id="password"--%><label for="password">密码：</label>
+            <input type="text" class="form-control" name="password" value="${password}" placeholder="请输入密码"/>
+        </div>
 
-            <div style="text-align: center" id="result"></div>
+        <div style="text-align: center" id="result"></div>
 
-            <div class="form-group" style="text-align: center">
-                <input class="btn btn-primary" onclick="javascript:updateStudentUser(${param.id},nameStudent.value,sex.value,phonenumber.value,username.value,password.value);" value="提交" />
-                <input class="btn btn-default" type="reset" value="重置" />
-                <a><input class="btn btn-default" type="button" onclick="javascript:history.back(-1);" value="返回" /></a>
-            </div>
+        <div class="form-group" style="text-align: center">
+            <input class="btn btn-primary"
+                   onclick="javascript:updateStudentUser(${param.id},nameStudent.value,sex.value,phonenumber.value,username.value,password.value);"
+                   value="提交"/>
+            <input class="btn btn-default" type="reset" value="重置"/>
+            <a><input class="btn btn-default" type="button" onclick="javascript:history.back(-1);" value="返回"/></a>
+        </div>
     </form>
 </div>
 </body>

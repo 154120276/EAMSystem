@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c"  uri ="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
 <!DOCTYPE html>
@@ -31,36 +31,37 @@
     <script>
         function deleteUser(sno) {
             //判断，安全提示
-            if (confirm("您确定要删除吗？")){
+            if (confirm("您确定要删除吗？")) {
                 //访问路径
-            location.href="${pageContext.request.contextPath}/deleteone?sno="+sno;
+                location.href = "${pageContext.request.contextPath}/deleteone?sno=" + sno;
             }
         }
-        window.onload=function () {
+
+        window.onload = function () {
             //给删除选择添加单击事件
-            document.getElementById("delSelected").onclick=function () {
+            document.getElementById("delSelected").onclick = function () {
                 //判断是否有选中条目
                 if (confirm("您确定要删除吗？")) {
-                    var flag=false;
-                    var cbs=document.getElementsByName("uid");
-                    for (let i = 0; i <cbs.length; i++) {
-                       if (cbs[i].checked){
-                           flag=true;
-                           break;
-                       }
+                    var flag = false;
+                    var cbs = document.getElementsByName("uid");
+                    for (let i = 0; i < cbs.length; i++) {
+                        if (cbs[i].checked) {
+                            flag = true;
+                            break;
+                        }
                     }
                     if (flag) {
                         document.getElementById("form").submit();
                     }
-               }
+                }
             }
 
             //全选全不选按钮
-            document.getElementById("firstCK").onclick=function () {
-                    //获取所有CB
-                var cbs=document.getElementsByName("uid");
-                for (let i = 0; i <cbs.length; i++) {
-                        cbs[i].checked=this.checked;
+            document.getElementById("firstCK").onclick = function () {
+                //获取所有CB
+                var cbs = document.getElementsByName("uid");
+                for (let i = 0; i < cbs.length; i++) {
+                    cbs[i].checked = this.checked;
                 }
             }
         }
@@ -73,39 +74,39 @@
         <form class="form-inline" action="${pageContext.request.contextPath}/selectclass" method="post">
             <div class="form-group">
                 <label for="exampleInputName2">班级名</label>
-                <input type="text" name="name" value="" class="form-control" id="exampleInputName2" >
+                <input type="text" name="name" value="" class="form-control" id="exampleInputName2">
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>
     </div>
-    <div   style="float: right;margin: 5px">
+    <div style="float: right;margin: 5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/teachers">添加班级</a>
         <a class="btn btn-primary" href="javascript:void(0)" id="delSelected">删除选中</a>
     </div>
     <form id="form" action="../../deleteall" method="post">
-    <table border="1" class="table table-bordered table-hover">
-        <tr class="success">
-            <th><input type="checkbox" id="firstCK"></th>
-            <th>班级名</th>
-            <th>班主任编号</th>
-            <th>班主任名</th>
-            <th>操作</th>
+        <table border="1" class="table table-bordered table-hover">
+            <tr class="success">
+                <th><input type="checkbox" id="firstCK"></th>
+                <th>班级名</th>
+                <th>班主任编号</th>
+                <th>班主任名</th>
+                <th>操作</th>
 
-        </tr>
-        <c:forEach items="${classes}" var="class" varStatus="s">
-            <tr>
-                <th><input type="checkbox" name="uid" value="${class.sno}"></th>
-                <td>${class.classname}</td>
-                <td>${class.teacherid}</td>
-                <td>${class.teachername}</td>
-                <td><a class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/updateclassjsp?Sno=${class.sno}">修改</a>&nbsp;
-                    <a class="btn btn-default btn-sm" href="javascript:deleteUser(${class.sno}); ">删除</a></td>
             </tr>
-        </c:forEach>
+            <c:forEach items="${classes}" var="class" varStatus="s">
+                <tr>
+                    <th><input type="checkbox" name="uid" value="${class.sno}"></th>
+                    <td>${class.classname}</td>
+                    <td>${class.teacherid}</td>
+                    <td>${class.teachername}</td>
+                    <td><a class="btn btn-default btn-sm"
+                           href="${pageContext.request.contextPath}/updateclassjsp?Sno=${class.sno}">修改</a>&nbsp;
+                        <a class="btn btn-default btn-sm" href="javascript:deleteUser(${class.sno}); ">删除</a></td>
+                </tr>
+            </c:forEach>
 
 
-
-    </table>
+        </table>
     </form>
 
 </div>

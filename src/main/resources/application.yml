@@ -3,14 +3,14 @@ jdbc:
   url: jdbc:mysql://1.15.243.183:3306/studentsystem?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
   username: root
   password: zcjdsql
- #激活其他配置文件；需要指定其他的配装文件名称
+  #激活其他配置文件；需要指定其他的配装文件名称
 spring:
   profiles:
     active: abc,bilibili
 
-  #mvc:
-    #view: /WEB-INF
-      #prefix: .html
+      #mvc:
+      #view: /WEB-INF
+    #prefix: .html
 
   #springboot自带的kikari数据库连接池
   datasource:
