@@ -26,7 +26,7 @@
 </head>
 <body>
 <div class="container">
-    <center><h3>修改班级页面</h3></center>
+    <center><h3>修改学生页面</h3></center>
     <form action="${pageContext.request.contextPath}/updatestudent" method="post">
         <div class="form-group">
             <input type="hidden" value="${student.id}" name="id"/>

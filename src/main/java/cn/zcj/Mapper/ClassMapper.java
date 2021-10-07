@@ -35,7 +35,7 @@ public interface ClassMapper {
     })
     public List<BanJi> selectclass(String classname);
 
-    @Select("select id,tid,cid,Content from announcement where id=#{sno}")
+    @Select("select id,tid,cid,Content from announcement where cid=#{sno}")
     @Results({
             @Result(id = true, column = "id", property = "id"),//id=true表示为主键
             @Result(column = "tid", property = "tid"),
