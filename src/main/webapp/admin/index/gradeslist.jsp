@@ -33,7 +33,10 @@
 <div class="container">
     <h3 style="text-align: center">成绩列表</h3>
 
-
+    <form class="form-inline" action="${pageContext.request.contextPath}/gradesExport" method="post" >
+        <input type="hidden" name="Sno" value="${sid}" class="form-control" id="snoInputName2">
+        <button type="submit" class="btn btn-default">导出</button>
+    </form>
     <form id="form" action="" method="post">
     <table border="1" class="table table-bordered table-hover">
         <tr class="success">

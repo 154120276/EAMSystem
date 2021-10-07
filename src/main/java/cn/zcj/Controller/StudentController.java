@@ -84,6 +84,7 @@ public class StudentController {
         PageInfo<Student> pageInfo = new PageInfo<Student>(userService.findTStudents(Sno,name));
         //3.将PageBean存入request
         modelAndView.addObject("pb",pageInfo);
+        modelAndView.addObject("sno",Sno);
         modelAndView.setViewName("/admin/index/t_Studentlist.jsp");
         return modelAndView;
     }
@@ -148,6 +149,7 @@ public class StudentController {
         PageInfo<course> pageInfo = new PageInfo<>(userService.findCoures(sno,Integer.parseInt(dayofweek)));
         //3.将PageBean存入request
         modelAndView.addObject("pb",pageInfo);
+        modelAndView.addObject("sno",sno);
         modelAndView.setViewName("/admin/index/studentcourses.jsp");
         return modelAndView;
     }
@@ -160,6 +162,7 @@ public class StudentController {
         int sid=userService.getsidbyuser(user);
         List<grade> grades=userService.getgrades(sid);
         modelAndView.addObject("grades",grades);
+        modelAndView.addObject("sid",sid);
         modelAndView.setViewName("/admin/index/gradeslist.jsp");
         return modelAndView;
     }

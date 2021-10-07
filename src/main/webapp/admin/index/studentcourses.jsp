@@ -60,6 +60,10 @@
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>
+        <form class="form-inline" action="${pageContext.request.contextPath}/courseExport" method="post" >
+            <input type="hidden" name="Sno" value="${sno}" class="form-control" id="snoInputName2">
+            <button type="submit" class="btn btn-default">导出</button>
+        </form>
     </div>
     <form id="form" action="${pageContext.request.contextPath}/" method="post">
         <table border="1" class="table table-bordered table-hover">

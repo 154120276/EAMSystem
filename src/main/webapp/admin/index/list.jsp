@@ -79,6 +79,9 @@
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>
+        <form class="form-inline" action="${pageContext.request.contextPath}/teacherExport" method="post">
+            <button type="submit" class="btn btn-default">导出</button>
+        </form>
     </div>
 
 

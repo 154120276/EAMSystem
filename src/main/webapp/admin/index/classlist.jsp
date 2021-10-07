@@ -78,6 +78,9 @@
             </div>
             <button type="submit" class="btn btn-default">查询</button>
         </form>
+        <form class="form-inline" action="${pageContext.request.contextPath}/classExport" method="post">
+            <button type="submit" class="btn btn-default">导出</button>
+        </form>
     </div>
     <div style="float: right;margin: 5px">
         <a class="btn btn-primary" href="${pageContext.request.contextPath}/teachers">添加班级</a>
